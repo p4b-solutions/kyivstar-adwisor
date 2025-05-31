@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug",
+      "console": "integratedTerminal",
+      "program": "${workspaceFolder}/test/index.test.ts",
+      "preLaunchTask": "npm: debug",
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/build/**/*.js"]
+    }
+  ]
+}

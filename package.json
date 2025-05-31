@@ -1,0 +1,33 @@
+{
+  "name": "@pro4biz/kyivstar-adwisor",
+  "version": "1.0.3",
+  "description": "Kyivstar Adwisor SMS API client",
+  "module": "./dist/index.esm.js",
+  "main": "./dist/index.cjs.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "author": {
+    "name": "Nazar Vaskiv",
+    "email": "n.vaskiv@medias.com.ua",
+    "url": "https://p4b.com.ua"
+  },
+  "license": "ISC",
+  "scripts": {
+    "clean": "shx rm -rf dist/*",
+    "debug": "shx rm -rf build/* && rollup -c rollup.config.dev.js && grunt env",
+    "build": "npm run clean && rollup -c rollup.config.js",
+    "deploy": "grunt increment && npm run build && npm publish --access public"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@types/node": "^22.15.29",
+    "grunt": "^1.6.1",
+    "grunt-p4b": "^1.0.15",
+    "rollup": "^4.41.1",
+    "shx": "^0.4.0",
+    "tslib": "^2.8.1",
+    "typescript": "^5.8.3"
+  }
+}
