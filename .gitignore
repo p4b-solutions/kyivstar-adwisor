@@ -4,3 +4,8 @@ build
 
 .env
 package-lock.json
+
+
+# MacOS
+.DS_Store
+Icon?
