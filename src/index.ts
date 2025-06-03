@@ -1,4 +1,4 @@
-class KiyvstarAdwisorError extends Error {
+class KyivstarAdwisorError extends Error {
   code: number;
   constructor(message: string, code: number) {
     super(message);
@@ -33,7 +33,7 @@ type CheckSMSResponse = {
   date: string;
 };
 
-export default class KiyvstarAdwisor {
+export default class KyivstarAdwisor {
   private is_sandbox: boolean;
   private client_id: string;
   private client_secret: string;
@@ -51,7 +51,7 @@ export default class KiyvstarAdwisor {
     this.is_sandbox = use_sandbox;
     if (typeof process !== "undefined" && process.versions?.node) {
       if (parseInt(process.versions.node) < 18) {
-        throw new Error("KiyvstarAdwisor requires Node.js version 18 or higher.");
+        throw new Error("KyivstarAdwisor requires Node.js version 18 or higher.");
       }
     }
   }
@@ -102,14 +102,14 @@ export default class KiyvstarAdwisor {
       });
       if (!response.ok) {
         const { error_description, error_verbose, error_hint, status_code }: AuthApiError = await response.json();
-        throw new KiyvstarAdwisorError(error_description ?? error_verbose ?? error_hint ?? "Unknown error", status_code);
+        throw new KyivstarAdwisorError(error_description ?? error_verbose ?? error_hint ?? "Unknown error", status_code);
       }
       const result = await response.json();
       this.access_token = result.access_token;
       this.access_token_expiry = Date.now() + result.expires_in * 1000;
     } catch (error: any) {
-      if (error instanceof KiyvstarAdwisorError) throw error;
-      throw new KiyvstarAdwisorError(error.cause?.name ?? "Authentication failed", 500);
+      if (error instanceof KyivstarAdwisorError) throw error;
+      throw new KyivstarAdwisorError(error.cause?.name ?? "Authentication failed", 500);
     }
   }
 
@@ -125,7 +125,7 @@ export default class KiyvstarAdwisor {
     });
     if (!response.ok) {
       const { errorMsg, errorCode }: BaseApiError = await response.json();
-      throw new KiyvstarAdwisorError(errorMsg ?? "Unknown error", errorCode ?? response.status);
+      throw new KyivstarAdwisorError(errorMsg ?? "Unknown error", errorCode ?? response.status);
     }
     return await response.json();
   }
