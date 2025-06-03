@@ -1,4 +1,4 @@
-import KiyvstarAdwisor from "../src";
+import KyivstarAdwisor from "../src";
 
 console.clear();
 
@@ -9,9 +9,9 @@ async function test() {
     const client_id = process.env.CLIENT_ID as string;
     const client_secret = process.env.CLIENT_SECRET as string;
 
-    const adwisor = new KiyvstarAdwisor(client_id, client_secret, true);
+    const adwisor = new KyivstarAdwisor(client_id, client_secret, true);
 
-    const sms = await adwisor.sendSMS("messagedesk", "+380501234567", "Test message from KiyvstarAdwisor");
+    const sms = await adwisor.sendSMS("messagedesk", "+380501234567", "Test message from KyivstarAdwisor");
     console.log("SMS send:", sms);
 
     await wait(5000);
